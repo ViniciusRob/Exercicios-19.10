@@ -1,0 +1,33 @@
+//Exercicio 4
+#include <stdio.h>
+
+void bubbleSort(int vetor[], int size);
+
+int main(void) {
+  int vetor[10] = {72, 12, 62, 69, 27, 67, 41, 56, 33, 74};
+
+  bubbleSort(vetor, 10);
+
+  int l;
+  for(l = 0; l < 10; l++) printf("%d ", vetor[l]);
+
+  return 0;
+}
+
+void bubbleSort(int vetor[], int size){
+  int l, d, aux, cont;
+
+  for(l = 1; l < size; l++){
+  
+    for(d = 0; d < size - l; d++){
+  
+      if(vetor[d] < vetor[d+1]){
+        cont += 3;
+        aux = vetor[d];
+        vetor[d] = vetor[d+1];
+        vetor [d+1] = aux;
+      }
+    }
+  }
+  printf("\n\n Número total de cópias: %d\n", cont);
+}
