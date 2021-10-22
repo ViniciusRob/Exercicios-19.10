@@ -1,0 +1,46 @@
+//Exercicio 3
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void bubbleSort(int vetor[], int size);
+void gera();
+
+int main(void) {
+  int vetor[20];
+  int l;
+  srand(time(NULL));
+  gera(vetor);
+  
+  printf("\n Número Gerados: \n");
+  for(l = 0; l < 20; l++) printf("%d ", vetor[l]);
+  printf("\n\n");
+
+  bubbleSort(vetor, 20);
+  printf("\n Numeros Decrescente: \n");
+  for(l = 0; l < 20; l++) printf("%d ", vetor[l]);
+  return 0;
+}
+
+void gera(int vetor[]){
+  int l, num;
+  for (l = 0; l < 20; l++){
+    num = rand() % 50;
+    vetor[l] = num;
+  }
+}
+
+void bubbleSort(int vetor[], int size){
+  int l, d, aux;
+  for(l = 1; l < size; l++){
+
+    for(d = 0; d < size - l; d++){
+
+      if(vetor[d] < vetor[d+1]){
+        aux = vetor[d];
+        vetor[d] = vetor[d+1];
+        vetor [d+1] = aux;
+      }
+    }
+  }
+}
