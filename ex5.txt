@@ -1,0 +1,56 @@
+//Exercício 5
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+
+void quicksort(int *x, int esq, int dir);//v
+
+int main(void){
+
+  int troca[16], trocado[16], v[16] = {3, 4, 9, 2, 5, 8, 2, 1, 7, 4, 6, 2, 9, 8, 5, 9};
+  printf("\nValores do vetores:\n");
+  for(int l = 0; l < 16; l++){
+    printf("%d ", v[l]);
+    troca[l] = v[l];
+  }
+  printf("\n");
+
+  quicksort(v, 0, 15);
+
+  printf("\nValores ordenados:\n");
+  for(int l = 0; l < 16; l++){ 
+    printf("%d ", v[l]);
+    trocado[l] = v[l];
+  }
+  
+  printf("\n\nValores trocados:\n");
+  for(int l = 0; l < 16; l++){
+    if(troca[l] == trocado[l]) printf("%dº - %d Manteve-se no lugar!\n", l+1, troca[l]);
+    else printf("%dº - %d Trocar por %d\n", l+1, troca[l], trocado[l]);
+  }
+}
+
+
+void quicksort(int *x, int esq, int dir) {
+  int l, d, meio, aux;
+     
+  l = esq;
+  d = dir;
+  meio = x[(esq + dir) / 2];
+     
+  while(l <= d) {
+    while(x[l] < meio && l < dir) l++;
+    while(x[d] > meio && d > esq) d--;
+
+      if(l <= d) {
+        aux = x[l];
+        x[l] = x[d];
+        x[d] = aux;
+        l++;
+        d--;
+      }
+    }
+     
+    if(d > esq) quicksort(x, esq, d);
+    if(l < dir) quicksort(x, l, dir);
+}
